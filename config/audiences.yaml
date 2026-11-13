@@ -1,0 +1,6 @@
+audiences:
+  - {id: aud_whitening_intenders,    name: Whitening Intenders,    channel: email, refresh: daily}
+  - {id: aud_lapsed_buyers,          name: Lapsed Buyers,          channel: email, refresh: daily}
+  - {id: aud_engaged_professionals,  name: Engaged Professionals,  channel: email, refresh: daily}
+  - {id: aud_new_nurturable,         name: New & Nurturable,       channel: email, refresh: daily}
+rule: every audience is consent-filtered in Gold - opted-out profiles can never be exported

@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: aud_whitening_intenders
+    columns:
+      - name: golden_profile_id
+        tests: [not_null]
+  - name: aud_audience_summary
+    columns:
+      - name: audience_id
+        tests: [unique, not_null]

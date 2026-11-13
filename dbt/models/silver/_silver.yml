@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: int_profiles_cleaned
+    columns:
+      - name: golden_profile_id
+        tests: [unique, not_null]

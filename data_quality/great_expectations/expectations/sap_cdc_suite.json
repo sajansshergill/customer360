@@ -1,0 +1,17 @@
+{
+  "name": "sap_cdc_bronze",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": { "table": "bronze_sap_cdc_profiles", "min_value": 1 }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": { "table": "bronze_sap_cdc_profiles", "column": "cdc_id" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "table": "bronze_sap_cdc_profiles", "column": "email" }
+    }
+  ]
+}

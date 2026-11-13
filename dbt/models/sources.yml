@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: bronze_raw
+    description: Tables loaded by the Python ingestion pipeline
+    tables:
+      - name: bronze_sap_cdc_profiles
+        columns:
+          - name: cdc_id
+          - name: email
+          - name: marketing_consent
+      - name: bronze_sfmc_engagement
+      - name: bronze_ga4_events
+      - name: bronze_aem_content
+      - name: bronze_commerce_orders
+
+  - name: silver_python
+    description: Silver tables built by Python identity resolution
+    tables:
+      - name: int_profiles_cleaned
+      - name: int_identity_matches
+      - name: int_identity_graph
+      - name: int_consent_latest
+      - name: int_engagement_unified

@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_consumer_360
+    columns:
+      - name: golden_profile_id
+        tests: [unique, not_null]
+  - name: dim_professional_360
+    columns:
+      - name: golden_profile_id
+        tests: [unique, not_null]

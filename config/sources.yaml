@@ -1,0 +1,6 @@
+sources:
+  sap_cdc:  {file: sap_cdc_profiles.csv, table: bronze_sap_cdc_profiles, schedule: "0 1 * * *", key: cdc_id}
+  sfmc:     {file: sfmc_engagement.csv,  table: bronze_sfmc_engagement,  schedule: "0 2 * * *", key: event_id}
+  ga4:      {file: ga4_events.csv,       table: bronze_ga4_events,       schedule: "0 3 * * *", key: event_id}
+  aem:      {file: aem_content.csv,      table: bronze_aem_content,      schedule: "0 4 * * *", key: content_view_id}
+  commerce: {file: commerce_orders.csv,  table: bronze_commerce_orders,  schedule: "0 5 * * *", key: order_id}

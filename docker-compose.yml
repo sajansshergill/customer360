@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./config:/app/config
+      - ./api:/app/api
+      - ./src:/app/src
+    environment:
+      TARGET: local
+      CONSUMER360_SALT: dev-salt
+      PYTHONPATH: /app/src:/app
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./config:/app/config
+      - ./dashboard:/app/dashboard
+      - ./src:/app/src
+    environment:
+      TARGET: local
+      PYTHONPATH: /app/src:/app
+    depends_on:
+      - api
+
+  airflow:
+    profiles: ["airflow"]
+    image: apache/airflow:2.10.4
+    # Optional: docker compose --profile airflow up

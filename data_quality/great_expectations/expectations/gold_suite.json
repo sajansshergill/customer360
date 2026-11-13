@@ -1,0 +1,17 @@
+{
+  "name": "gold_tables",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": { "table": "gold_consumer_360", "min_value": 1 }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": { "table": "gold_consumer_360", "column": "golden_profile_id" }
+    },
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": { "table": "gold_audience_summary", "min_value": 4, "max_value": 4 }
+    }
+  ]
+}

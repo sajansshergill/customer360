@@ -1,0 +1,2 @@
+cdc_id,email,first_name,last_name,phone,date_of_birth,city,zip_code,is_professional,speciality,marketing_consent,profiling_consent,third_party_sharing,registered_at
+cdc_p00000, grace.davis0@example.com,Grace,Davis,2015550000,1990-01-01,Jersey City,07302,False,,True,True,False,2025-01-15

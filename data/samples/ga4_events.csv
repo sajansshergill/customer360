@@ -1,0 +1,2 @@
+event_id,device_id,user_pseudo_id,email,session_id,event_name,item_name,event_at
+ga4_000001,dev-123456,pseudo_dev-123456,,sess_p00000_0,page_view,Home,2025-06-01T10:00:00

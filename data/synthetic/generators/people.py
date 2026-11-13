@@ -7,7 +7,7 @@ LAST = ["Sharma","Patel","Johnson","Garcia","Kim","Nguyen","Singh","Brown","Kaur
         "Murphy","Shah","Torres","Lee","Wilson","Gupta","Chen","Davis","Khan","Mehta"]
 CITIES = [("Jersey City","07302"),("New York","10001"),("Piscataway","08854"),
           ("Chicago","60601"),("Austin","73301"),("Seattle","98101")]
-SPECIALITIES = ["General Dentistry","Orthodontics","Periodontics","Paediatrics", None]
+SPECIALITIES = ["General Dentistry","Orthodontics","Orthodontics","Periodontics","Paediatrics"]
 
 @dataclass
 class Person:

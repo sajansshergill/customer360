@@ -27,9 +27,16 @@ def generate_sfmc_engagement(people: list[Person], seed: int = 11) -> list[dict]
         journeys = JOURNEYS_PRO if p.is_professional else JOURNEYS_CONSUMER
         for _ in range(rng.randint(1, 5)):
             journey = rng.choice(journeys)
-            sent_at = base + timedelta(days=rng.randint(0, 150), hours=rng.randint(0, 12))
+            # Bias recent activity into Oct 2025 so audience windows (as-of 2025-11-01) fire
+            if rng.random() < 0.35:
+                sent_at = datetime(2025, 10, 1, 9, 0, 0) + timedelta(
+                    days=rng.randint(0, 28), hours=rng.randint(0, 12)
+                )
+            else:
+                sent_at = base + timedelta(days=rng.randint(0, 150), hours=rng.randint(0, 12))
             add(p, sub_key, email_used, journey, "send", sent_at)
-            if rng.random() < 0.55:
+            open_rate = 0.75 if p.is_professional else 0.55
+            if rng.random() < open_rate:
                 add(p, sub_key, email_used, journey, "open", sent_at + timedelta(hours=rng.randint(1, 48)))
                 if rng.random() < 0.45:
                     cat = rng.choice(["Oral Care", "Whitening", "Sensitivity", "Professional"])

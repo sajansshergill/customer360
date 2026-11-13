@@ -1,0 +1,37 @@
+name: consumer360
+version: 1.0.0
+config-version: 2
+profile: consumer360
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+clean-targets:
+  - target
+  - dbt_packages
+  - logs
+
+vars:
+  consent_column: marketing_consent
+
+models:
+  consumer360:
+    bronze:
+      +materialized: view
+      +schema: bronze
+    silver:
+      +materialized: view
+      +schema: silver
+    gold:
+      +materialized: table
+      +schema: gold
+    audiences:
+      +materialized: table
+      +schema: audiences
+
+snapshots:
+  consumer360:
+    +target_schema: snapshots

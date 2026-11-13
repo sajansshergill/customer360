@@ -1,0 +1,11 @@
+match_rules:
+  - {name: cdc_id,        type: deterministic, confidence: 1.00, keys: [cdc_id]}
+  - {name: verified_email,type: deterministic, confidence: 1.00, keys: [email]}
+  - {name: phone,         type: deterministic, confidence: 0.98, keys: [phone]}
+  - {name: sfmc_link,     type: linked,        confidence: 0.95, keys: [subscriber_key, email]}
+  - {name: device,        type: linked,        confidence: 0.90, keys: [device_id, email]}
+  - {name: fuzzy_name_dob,type: probabilistic, confidence: 0.75, keys: [full_name, date_of_birth, zip_code], min_confidence: 0.70}
+survivorship:
+  name: most_recent_verified
+  email: most_frequent
+  consent: source_of_truth_only   # SAP CDC only - never overwritten by another source

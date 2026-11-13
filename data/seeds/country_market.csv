@@ -1,0 +1,5 @@
+market,language,currency,consent_regime
+US,en,USD,opt-out
+CA,en,CA D,CASL opt-in
+GB,en,GBP,GDPR opt-in
+IN,en,INR,DPDP opt-in

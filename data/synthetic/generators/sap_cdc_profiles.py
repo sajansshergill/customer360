@@ -7,7 +7,11 @@ def generate_cdc_profiles(people: list[Person], seed: int = 7) -> list[dict]:
     rng = random.Random(seed)
     rows = []
     for p in people:
-        registered = date(2025, 1, 1) + timedelta(days=rng.randint(0, 540))
+        # ~12% register in the last 14 days relative to pipeline as-of (2025-11-01)
+        if rng.random() < 0.12:
+            registered = date(2025, 10, 18) + timedelta(days=rng.randint(0, 13))
+        else:
+            registered = date(2025, 1, 1) + timedelta(days=rng.randint(0, 280))
         rows.append({
             "cdc_id": f"cdc_{p.true_id}",
             "email": p.email,

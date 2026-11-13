@@ -1,0 +1,15 @@
+consumer360:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: ../data/consumer360.duckdb
+      schema: main
+      threads: 4
+    gcp:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('GCP_PROJECT') }}"
+      dataset: consumer360_gold
+      threads: 4
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"

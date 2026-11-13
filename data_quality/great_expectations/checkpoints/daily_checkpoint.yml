@@ -1,0 +1,8 @@
+name: daily_checkpoint
+config_version: 1.0
+class_name: SimpleCheckpoint
+validations:
+  - batch_request:
+      datasource_name: duckdb_local
+      data_asset_name: consumer360
+    expectation_suite_name: gold_suite

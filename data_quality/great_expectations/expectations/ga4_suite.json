@@ -1,0 +1,13 @@
+{
+  "name": "ga4_bronze",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": { "table": "bronze_ga4_events", "min_value": 0 }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": { "table": "bronze_ga4_events", "column": "event_id" }
+    }
+  ]
+}
