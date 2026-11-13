@@ -1,15 +1,26 @@
-"""Streamlit page - reads only Gold tables from the warehouse."""
+"""Overview KPIs from Gold tables."""
+import sys
+from pathlib import Path
+
+_ROOT = Path(__file__).resolve().parents[2]
+sys.path[:0] = [str(_ROOT), str(_ROOT / "src")]
+
 import streamlit as st
 import duckdb
 
+from dashboard.bootstrap import ensure_warehouse
 from config.settings import get_settings
 
 st.title("Overview")
-path = get_settings().warehouse_path
-if not path.exists():
-    st.warning("Warehouse not found. Run: bash scripts/run_pipeline.sh")
-    st.stop()
 
+
+@st.cache_resource
+def _boot():
+    return str(ensure_warehouse())
+
+
+_boot()
+path = get_settings().warehouse_path
 con = duckdb.connect(str(path), read_only=True)
 try:
     c = con.execute("select count(*) from gold_consumer_360").fetchone()[0]
